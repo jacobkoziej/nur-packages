@@ -1,6 +1,6 @@
 # nur-packages
 
-> My NUR
+> My Nix User Repository
 
 ## Copyright & Licensing
 

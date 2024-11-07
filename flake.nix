@@ -1,5 +1,5 @@
 {
-  description = "Jacob Koziej's NUR";
+  description = "Jacob Koziej's Nix User Repository";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
