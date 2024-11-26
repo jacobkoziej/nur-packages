@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   version ? "14.2_20240403",
   homepage ? "https://github.com/espressif/binutils-gdb",
   release-prefix ? "releases/download/esp-gdb-v",
@@ -31,6 +30,6 @@ let
   };
 
 in
-lib.attrsets.recurseIntoAttrs {
+{
   xtensa-esp-elf-gdb = pkgs.callPackage xtensa-esp-elf-gdb { };
 }

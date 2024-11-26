@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   version ? "14.2.0_20240906",
   homepage ? "https://github.com/espressif/crosstool-NG",
   release-prefix ? "releases/download/esp-",
@@ -29,6 +28,6 @@ let
   };
 
 in
-lib.attrsets.recurseIntoAttrs {
+{
   xtensa-esp-elf = pkgs.callPackage xtensa-esp-elf { };
 }
