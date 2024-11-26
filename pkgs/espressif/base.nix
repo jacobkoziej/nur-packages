@@ -1,7 +1,11 @@
 {
   pname,
   version,
+  homepage,
+  release-prefix,
+  description,
   hash,
+  fhs-pkgs,
 }:
 
 {
@@ -13,14 +17,12 @@
 }:
 
 let
+  currentSystem = builtins.currentSystem;
+
   env = buildFHSUserEnv {
     name = "${pname}-env";
     inherit version;
-    targetPkgs =
-      pkgs: with pkgs; [
-        zlib
-        zstd
-      ];
+    targetPkgs = fhs-pkgs;
     runScript = "";
   };
 
@@ -30,7 +32,7 @@ stdenv.mkDerivation rec {
   inherit version;
 
   src = fetchurl {
-    url = "https://github.com/espressif/crosstool-NG/releases/download/esp-${version}/${pname}-${version}-${builtins.currentSystem}-gnu.tar.gz";
+    url = "${homepage}/${release-prefix}${version}/${pname}-${version}-${currentSystem}-gnu.tar.gz";
     inherit hash;
   };
 
@@ -60,12 +62,11 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "Crosstool-NG with support for Xtensa";
-    homepage = "https://github.com/espressif/crosstool-NG";
+    inherit description;
+    inherit homepage;
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ jacobkoziej ];
     platforms = [
-      "aarch64-linux"
       "x86_64-linux"
     ];
   };
