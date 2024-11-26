@@ -17,8 +17,12 @@
           inherit system;
         };
 
+        default = import ./default.nix { inherit pkgs; };
+
       in
       {
+        inherit default;
+
         formatter = pkgs.nixfmt-rfc-style;
       }
     );
