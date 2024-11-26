@@ -40,6 +40,13 @@ includes = [
   "*.toml",
 ]
 
+[formatter.yaml]
+command = "yamlfmt"
+includes = [
+  "*.yaml",
+  "*.yml",
+]
+
 [global]
 excludes = [
   "*.gitignore",
