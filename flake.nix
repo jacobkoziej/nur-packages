@@ -35,7 +35,7 @@
               mdformat
               shfmt
               toml-sort
-              treefmt2
+              treefmt
               yamlfmt
             ];
 
