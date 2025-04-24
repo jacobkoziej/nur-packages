@@ -2,9 +2,5 @@
 
 lib.attrsets.recurseIntoAttrs {
   espressif = import ./espressif { inherit pkgs lib; };
+  raspberry-pi = import ./raspberry-pi { inherit pkgs lib; };
 }
-
-# concatMapAttrs to get parent name
-# filterAttrsRecursive
-# foldAttrs
-# mapAttrs' <- you can set the prefix to be the current set name
