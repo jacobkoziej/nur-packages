@@ -23,8 +23,6 @@
 
       in
       {
-        inherit default;
-
         devShells.default = pkgs.mkShell (
           let
             pre-commit-bin = "${lib.getBin pkgs.pre-commit}/bin/pre-commit";
@@ -46,6 +44,8 @@
         );
 
         formatter = pkgs.nixfmt-rfc-style;
+
+        legacyPackages = default.pkgs;
       }
     );
 }
