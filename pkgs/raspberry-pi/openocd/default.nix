@@ -7,7 +7,7 @@ let
 
 in
 pkgs.openocd.overrideAttrs (previousAttrs: {
-  src = pkgs.fetchFromGitHub {
+  src = fetchFromGitHub {
     owner = "raspberrypi";
     repo = "openocd";
     rev = "cf9c0b41cd5c45b2faf01b4fd1186f160342b7b7";
