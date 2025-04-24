@@ -11,9 +11,7 @@ pkgs.openocd.overrideAttrs (previousAttrs: {
     owner = "raspberrypi";
     repo = "openocd";
     rev = "cf9c0b41cd5c45b2faf01b4fd1186f160342b7b7";
-    hash = "sha256-gfwi4p0B//kaphBpOJKK2/0nzfsmAmfao4hhtIPlCH0=";
-    fetchSubmodules = true;
-    leaveDotGit = true;
+    hash = "sha256-Wqv9zGwyYgSk/5WqPYXnVWM+TQDJa9iqBQ3ev+o8aiA=";
   };
 
   nativeBuildInputs =
@@ -21,12 +19,11 @@ pkgs.openocd.overrideAttrs (previousAttrs: {
     ++ (with pkgs; [
       autoconf
       automake
-      git
       libtool
       which
     ]);
 
   preConfigure = ''
-    $src/bootstrap
+    SKIP_SUBMODULE=1 $src/bootstrap
   '';
 })
