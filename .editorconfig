@@ -12,3 +12,8 @@ indent_size              = tab
 [*.{nix,toml,yml,yaml}]
 indent_style = space
 indent_size  = 2
+
+[{*.sh,.envrc}]
+binary_next_line    = true
+functiion_next_line = true
+space_redirects     = true
