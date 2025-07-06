@@ -25,7 +25,7 @@
       {
         devShells.default = pkgs.mkShell (
           let
-            pre-commit-bin = "${lib.get pkgs.pre-commit}/bin/pre-commit";
+            pre-commit-bin = lib.getExe pkgs.pre-commit;
 
           in
           {
