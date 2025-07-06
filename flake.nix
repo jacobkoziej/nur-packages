@@ -25,11 +25,12 @@
       {
         devShells.default = pkgs.mkShell (
           let
-            pre-commit-bin = "${lib.getBin pkgs.pre-commit}/bin/pre-commit";
+            pre-commit-bin = "${lib.get pkgs.pre-commit}/bin/pre-commit";
 
           in
           {
             packages = with pkgs; [
+              commitlint-rs
               mdformat
               shfmt
               toml-sort
