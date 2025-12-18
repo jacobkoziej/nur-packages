@@ -11,5 +11,6 @@ let
 in
 recurseIntoAttrs {
   analogdevicesinc = import ./analogdevicesinc { inherit pkgs; };
+  Infineon = import ./Infineon { inherit pkgs; };
   raspberrypi = import ./raspberrypi { inherit pkgs; };
 }
