@@ -25,7 +25,7 @@ openocd.overrideAttrs (previousAttrs: {
   ];
 
   preConfigure = ''
-    SKIP_SUBMODULE=1 $src/bootstrap
+    SKIP_SUBMODULE=1 ./bootstrap
   '';
 
   meta = with lib; {
