@@ -7,7 +7,7 @@
 
 let
   pname = "scopy";
-  version = "2.0.0";
+  version = "2.1.0";
 
   src =
     let
@@ -22,7 +22,7 @@ let
 
       src = fetchzip {
         url = "https://github.com/analogdevicesinc/scopy/releases/download/v${version}/${base}-AppImage.zip";
-        hash = "sha256-MoJPeAo3CLRdA2TCTBUVdJ4AAfSYurqmUsLh8ZW84BQ=";
+        hash = "sha256-IK+GwwhYOYdFj4XxlD3AT7OlTQEuF+nezcPJ6USjaMM=";
       };
 
     in
@@ -44,8 +44,8 @@ appimageTools.wrapType2 {
     install -m 444 -D ${appimageContents}/scopy.desktop \
       $out/share/applications/scopy.desktop
 
-    install -m 444 -D ${appimageContents}/scopy.png \
-      $out/share/icons/hicolor/512x512/apps/scopy.png
+    install -m 444 -D ${appimageContents}/scopy.svg \
+      $out/share/icons/hicolor/512x512/apps/scopy.svg
   '';
 
   meta = with lib; {
