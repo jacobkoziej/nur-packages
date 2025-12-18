@@ -1,9 +1,7 @@
-{ pkgs }:
-
-let
-  lib = pkgs.lib;
-
-in
 {
-  pkgs = import ./pkgs { inherit pkgs lib; };
+  pkgs ? import <nixpkgs> { },
+}:
+
+{
+  pkgs = import ./pkgs pkgs pkgs;
 }

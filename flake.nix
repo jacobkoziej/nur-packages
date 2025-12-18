@@ -2,51 +2,43 @@
   description = "Jacob Koziej's Nix User Repository";
 
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
   };
 
   outputs =
     inputs:
 
-    inputs.flake-utils.lib.eachDefaultSystem (
-      system:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
 
-      let
-        pkgs = import inputs.nixpkgs {
-          inherit system;
-        };
+      imports = [
+        ./dev-shells.nix
+      ];
 
-        lib = pkgs.lib;
+      perSystem =
+        {
+          pkgs,
+          system,
+          ...
+        }:
 
-        default = import ./default.nix { inherit pkgs; };
+        {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
 
-      in
-      {
-        devShells.default = pkgs.mkShell (
-          let
-            pre-commit-bin = lib.getExe pkgs.pre-commit;
-
-          in
-          {
-            packages = with pkgs; [
-              commitlint-rs
-              mdformat
-              shfmt
-              toml-sort
-              treefmt
-              yamlfmt
+            overlays = [
+              (import ./pkgs)
             ];
+          };
 
-            shellHook = ''
-              ${pre-commit-bin} install --allow-missing-config > /dev/null
-            '';
-          }
-        );
+          legacyPackages = import ./pkgs pkgs pkgs;
 
-        formatter = pkgs.nixfmt-rfc-style;
-
-        legacyPackages = default.pkgs;
-      }
-    );
+          formatter = pkgs.nixfmt-rfc-style;
+        };
+    };
 }

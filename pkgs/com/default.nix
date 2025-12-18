@@ -1,13 +1,14 @@
-final: prev:
+{
+  pkgs,
+  ...
+}:
 
 let
-  pkgs = prev;
-
   inherit (pkgs) lib;
 
   inherit (lib.attrsets) recurseIntoAttrs;
 
 in
 recurseIntoAttrs {
-  com = import ./com { inherit pkgs; };
+  github = import ./github { inherit pkgs; };
 }
