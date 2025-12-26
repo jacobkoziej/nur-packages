@@ -9,4 +9,5 @@ in
   openocd-nightly = pkgs.com.github.openocd-org.openocd;
   openocd-rpi = pkgs.com.github.raspberrypi.openocd;
   openocd-ti = pkgs.com.github.TexasInstruments.ti-openocd;
+  scopy = pkgs.com.github.analogdevicesinc.scopy;
 }
