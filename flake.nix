@@ -20,6 +20,13 @@
         ./dev-shells.nix
       ];
 
+      flake = {
+        overlays = {
+          default = import ./overlay.nix;
+          pkgs = import ./pkgs;
+        };
+      };
+
       perSystem =
         {
           pkgs,
@@ -32,7 +39,7 @@
             inherit system;
 
             overlays = [
-              (import ./pkgs)
+              (import ./overlay.nix)
             ];
           };
 
