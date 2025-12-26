@@ -1,36 +1,26 @@
 {
-  autoconf,
-  automake,
   fetchFromGitHub,
-  lib,
-  libtool,
-  openocd,
-  which,
-  ...
+  openocd-nightly,
 }:
 
-openocd.overrideAttrs (previousAttrs: {
+let
+  rev = "cd4873400c881ce3019c74620afb19e964a1f235";
+
+in
+openocd-nightly.overrideAttrs (previousAttrs: {
+  version = rev;
+
   src = fetchFromGitHub {
     owner = "raspberrypi";
     repo = "openocd";
-    rev = "cd4873400c881ce3019c74620afb19e964a1f235";
+    inherit rev;
     hash = "sha256-lQugY+dUdvfFGGj1Sf0a5KzOzHJhdQfhyE/xFxx5Ouc=";
   };
 
-  nativeBuildInputs = previousAttrs.nativeBuildInputs ++ [
-    autoconf
-    automake
-    libtool
-    which
-  ];
-
-  preConfigure = ''
-    SKIP_SUBMODULE=1 ./bootstrap
+  postPatch = ''
+    substituteInPlace src/Makefile.am \
+      --replace-fail '@RELSTR@' '-${rev}' \
+      --replace-fail '@GITVERSION@' '${rev}' \
+      ;
   '';
-
-  meta = with lib; {
-    maintainers = with maintainters; [
-      jacobkoziej
-    ];
-  };
 })

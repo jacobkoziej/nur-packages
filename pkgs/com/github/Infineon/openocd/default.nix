@@ -1,19 +1,14 @@
 {
-  autoconf,
-  automake,
   fetchzip,
-  lib,
-  libtool,
-  openocd,
-  which,
-  ...
+  openocd-nightly,
 }:
 
 let
   version = "5.11";
+  rev = "refs/tags/release-v${version}.0";
 
 in
-openocd.overrideAttrs (previousAttrs: {
+openocd-nightly.overrideAttrs (previousAttrs: {
   inherit version;
 
   src = fetchzip {
@@ -21,25 +16,18 @@ openocd.overrideAttrs (previousAttrs: {
     hash = "sha256-mi+6C18u2B5YhzXe6mNDCvJ06g/lmUtQVntWgwvFtKc=";
   };
 
-  nativeBuildInputs = previousAttrs.nativeBuildInputs ++ [
-    autoconf
-    automake
-    libtool
-    which
+  patches = [
+    ./add-rev.patch
   ];
+
+  postPatch = ''
+    substituteInPlace configure.ac \
+      --replace-fail '@REV@' '${rev}' \
+      ;
+  '';
 
   postUnpack = ''
     chmod +x $sourceRoot/bootstrap
     chmod +x $sourceRoot/src/helper/bin2char.sh
   '';
-
-  preConfigure = ''
-    SKIP_SUBMODULE=1 ./bootstrap
-  '';
-
-  meta = with lib; {
-    maintainers = with maintainters; [
-      jacobkoziej
-    ];
-  };
 })

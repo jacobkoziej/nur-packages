@@ -1,0 +1,16 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6d79cd631..20c3b72c7 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -28,9 +28,8 @@ if RELEASE
+ %C%_libopenocd_la_CPPFLAGS += -DRELSTR=\"\"
+ %C%_libopenocd_la_CPPFLAGS += -DGITVERSION=\"\"
+ else
+-%C%_libopenocd_la_CPPFLAGS += -DRELSTR=\"`$(top_srcdir)/guess-rev.sh $(top_srcdir)`\"
+-%C%_libopenocd_la_CPPFLAGS += -DGITVERSION=\"`cd $(top_srcdir) && git describe`\"
+-%C%_libopenocd_la_CPPFLAGS += -DPKGBLDDATE=\"`date +%F-%R`\"
++%C%_libopenocd_la_CPPFLAGS += -DRELSTR=\"@RELSTR@\"
++%C%_libopenocd_la_CPPFLAGS += -DGITVERSION=\"@GITVERSION@\"
+ endif
+
+ # add default CPPFLAGS
