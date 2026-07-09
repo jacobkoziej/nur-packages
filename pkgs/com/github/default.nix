@@ -15,4 +15,5 @@ recurseIntoAttrs {
   openocd-org = import ./openocd-org { inherit pkgs; };
   raspberrypi = import ./raspberrypi { inherit pkgs; };
   TexasInstruments = import ./TexasInstruments { inherit pkgs; };
+  tmux = import ./tmux { inherit pkgs; };
 }

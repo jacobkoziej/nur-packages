@@ -1,0 +1,13 @@
+diff --git a/spawn.c b/spawn.c
+index e0cac4bc1..af6e03d5c 100644
+--- a/spawn.c
++++ b/spawn.c
+@@ -177,7 +177,7 @@ spawn_window(struct spawn_context *sc, char **cause)
+ 	/* Set the name of the new window. */
+ 	if (~sc->flags & SPAWN_RESPAWN) {
+ 		free(w->name);
+-		if (sc->name == NULL || *sc->name == '\0')
++		if (sc->name == NULL)
+ 			w->name = default_window_name(w);
+ 		else {
+ 			w->name = xstrdup(sc->name);
