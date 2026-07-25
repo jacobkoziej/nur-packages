@@ -45,7 +45,7 @@
 
           legacyPackages = import ./pkgs pkgs pkgs;
 
-          formatter = pkgs.nixfmt-rfc-style;
+          formatter = pkgs.nixfmt;
         };
     };
 }
