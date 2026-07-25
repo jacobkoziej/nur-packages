@@ -11,9 +11,9 @@ let
 in
 recurseIntoAttrs {
   analogdevicesinc = import ./analogdevicesinc { inherit pkgs; };
-  Infineon = import ./Infineon { inherit pkgs; };
+  infineon = import ./infineon { inherit pkgs; };
   openocd-org = import ./openocd-org { inherit pkgs; };
   raspberrypi = import ./raspberrypi { inherit pkgs; };
-  TexasInstruments = import ./TexasInstruments { inherit pkgs; };
+  texasinstruments = import ./texasinstruments { inherit pkgs; };
   tmux = import ./tmux { inherit pkgs; };
 }
