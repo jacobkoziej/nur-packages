@@ -12,7 +12,7 @@
 }:
 
 let
-  rev = "e440b0648fd5a9ced8b3a05ff1a73b17c00cd144";
+  rev = "fc566d74005a4aefbe125b9b2f777d9514c60c87";
 
 in
 (openocd.overrideAttrs (previousAttrs: {
@@ -22,7 +22,7 @@ in
     owner = "openocd-org";
     repo = "openocd";
     inherit rev;
-    hash = "sha256-0DcEQv2ZBs61d4xlT5iI1i4tTyIVJah5aw3Ke1Zz34c=";
+    hash = "sha256-fo6R9TPLZMfMPctbwSzjTUQk9WdBRg6c5xIOFcrSURk=";
   };
 
   patches = [
