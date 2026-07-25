@@ -11,6 +11,7 @@ let
 in
 recurseIntoAttrs {
   analogdevicesinc = import ./analogdevicesinc { inherit pkgs; };
+  herd = import ./herd { inherit pkgs; };
   infineon = import ./infineon { inherit pkgs; };
   openocd-org = import ./openocd-org { inherit pkgs; };
   raspberrypi = import ./raspberrypi { inherit pkgs; };
