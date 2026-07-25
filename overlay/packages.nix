@@ -1,10 +1,11 @@
 final: prev:
 
 let
-  pkgs = import ./pkgs final prev;
+  pkgs = import ../pkgs final prev;
 
 in
 {
+  herdtools7 = pkgs.com.github.herd.herdtools7;
   openocd-infineon = pkgs.com.github.infineon.openocd;
   openocd-nightly = pkgs.com.github.openocd-org.openocd;
   openocd-rpi = pkgs.com.github.raspberrypi.openocd;

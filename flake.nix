@@ -22,7 +22,7 @@
 
       flake = {
         overlays = {
-          default = import ./overlay.nix;
+          default = import ./overlay;
           pkgs = import ./pkgs;
         };
       };
@@ -39,7 +39,7 @@
             inherit system;
 
             overlays = [
-              (import ./overlay.nix)
+              (import ./overlay)
             ];
           };
 
